@@ -25,7 +25,7 @@ const getStudentById = (req,res) => {
 };
 
 const addStudent = (req,res) => {
-    const{name,email,age,dob} = req.body;
+    const{id,name,email,age,dob} = req.body;
 
     //check if email exist
     pool.query(queries.checkEmailExists,[email], (error,results)=>
@@ -35,7 +35,7 @@ const addStudent = (req,res) => {
         }
 
         //add student to database
-        pool.query(queries.addStudent,[name,email,age,dob],(error,results) => {
+        pool.query(queries.addStudent,[id,name,email,age,dob],(error,results) => {
             if(error){
                 throw error;
             }
